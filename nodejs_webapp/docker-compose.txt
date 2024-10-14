@@ -1,0 +1,32 @@
+
+services:
+  backend: #
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend_nodejsapp_v2
+    env_file: 
+      - path: backend_environment_variables.env
+        required: true # default
+    ports:
+      - 4000:3000
+    # environment:
+    #   - MONGO_USERNAME=ran_it
+    #   - MONGO_PASSWORD=your_password
+    #   - MONGO_PORT=27017
+    #   - MONGO_DB=mongo_db_name
+  
+  # nginxwebserver:
+  #   container_name: nginx
+  #   working_dir: /app
+  #   image: nginx:stable-alpine
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - static_volume:/app/frontend/public/static
+  #     - media_volume:/app/backend/media
+  #     - ./nginx:/etc/nginx/conf.d
+  #   depends_on:
+  #     - frontend
+  #     - backend

@@ -1,0 +1,19 @@
+
+services:
+  nginx:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: nginx_webserver
+    # working_dir: /app
+    # image: nginx:stable-alpine
+    restart: always
+    ports:
+      - "80:80"
+    # volumes:
+    #   - static_volume:/app/frontend/public/static
+    #   - media_volume:/app/backend/media
+    #   - ./nginx:/etc/nginx/conf.d
+    # depends_on:
+    #   - frontend
+    #   - backend

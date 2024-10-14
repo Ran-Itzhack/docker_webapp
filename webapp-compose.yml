@@ -1,0 +1,29 @@
+
+services:
+  backend: #
+    build: 
+      context: ./nodejs_webapp
+      dockerfile: Dockerfile
+    container_name: backend_nodejsapp
+    env_file: 
+      - path: ./nodejs_webapp/backend_environment_variables.env
+        required: true # default
+    ports:
+      - 8000:3000
+  nginx:
+    build: 
+      context: ./nginx_server
+      dockerfile: Dockerfile
+    container_name: nginx_webserver
+    # working_dir: /app
+    # image: nginx:stable-alpine
+    restart: always
+    ports:
+      - "80:80"
+    # volumes:
+    #   - static_volume:/app/frontend/public/static
+    #   - media_volume:/app/backend/media
+    #   - ./nginx:/etc/nginx/conf.d
+    # depends_on:
+    #   - frontend
+    #   - backend
