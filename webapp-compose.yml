@@ -6,10 +6,19 @@ services:
       dockerfile: Dockerfile
     container_name: backend_nodejsapp
     env_file: 
-      - path: ./nodejs_webapp/backend_environment_variables.env
+      - path: ./nodejs_webapp/nodejsapp.env
         required: true # default
     ports:
       - 8000:3000
+
+  frontend:
+    container_name: frontend_react
+    build:
+      context: ./frontend_react_webpack
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"
+
   nginx:
     build: 
       context: ./nginx_server

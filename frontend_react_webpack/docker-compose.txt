@@ -1,0 +1,9 @@
+
+services:
+  frontend:
+    container_name: frontend_react_v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:8080"

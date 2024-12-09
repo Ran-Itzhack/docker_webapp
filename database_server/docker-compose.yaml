@@ -1,0 +1,21 @@
+
+services:
+  mongodb:
+    env_file:
+      - mongodb.env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: mongo_server
+    
+    # hostname: 'mongo'
+    domainname: 'example.com'
+    restart: 'always'
+    ports:
+      - 17017:27017
+    # environment:
+    # - 'MONGO_INITDB_ROOT_USERNAME=root'
+    # - 'MONGO_INITDB_ROOT_PASSWORD=example'
+    # volumes:
+    # - 'mongo_data:/data/db'
+    
